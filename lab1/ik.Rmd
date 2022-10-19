@@ -39,7 +39,10 @@ starwars %>% ncol()
 starwars %>% glimpse()
 ```
 
-
+### Задание 4
+```{r}
+length(unique(starwars$species))
+```
 
 
 

@@ -402,18 +402,18 @@ select(),filter(),mutate(),arrange(),group_by().</p>
 ## #   ¹​hair_color, ²​skin_color, ³​eye_color, ⁴​birth_year, ⁵​homeworld</code></pre>
 <pre class="r"><code>starwars &lt;- starwars</code></pre>
 <div id="задание-1" class="section level3">
-<h3>задание 1</h3>
+<h3>Задание 1</h3>
 <p>сколько строк в датафрейме</p>
 <pre class="r"><code>starwars %&gt;% nrow</code></pre>
 <pre><code>## [1] 87</code></pre>
 </div>
 <div id="задание-2" class="section level3">
-<h3>задание 2</h3>
+<h3>Задание 2</h3>
 <pre class="r"><code>starwars %&gt;% ncol()</code></pre>
 <pre><code>## [1] 14</code></pre>
 </div>
 <div id="задание-3" class="section level3">
-<h3>задание 3</h3>
+<h3>Задание 3</h3>
 <pre class="r"><code>starwars %&gt;% glimpse()</code></pre>
 <pre><code>## Rows: 87
 ## Columns: 14
@@ -431,6 +431,11 @@ select(),filter(),mutate(),arrange(),group_by().</p>
 ## $ films      &lt;list&gt; &lt;&quot;The Empire Strikes Back&quot;, &quot;Revenge of the Sith&quot;, &quot;Return…
 ## $ vehicles   &lt;list&gt; &lt;&quot;Snowspeeder&quot;, &quot;Imperial Speeder Bike&quot;&gt;, &lt;&gt;, &lt;&gt;, &lt;&gt;, &quot;Imp…
 ## $ starships  &lt;list&gt; &lt;&quot;X-wing&quot;, &quot;Imperial shuttle&quot;&gt;, &lt;&gt;, &lt;&gt;, &quot;TIE Advanced x1&quot;,…</code></pre>
+</div>
+<div id="задание-4" class="section level3">
+<h3>Задание 4</h3>
+<pre class="r"><code>length(unique(starwars$species))</code></pre>
+<pre><code>## [1] 38</code></pre>
 </div>
 </div>
 
