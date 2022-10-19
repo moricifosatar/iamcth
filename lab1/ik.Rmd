@@ -1,0 +1,42 @@
+---
+title: "Основы обработки данных с помощью R"
+output: html_document
+date: "2022-10-19"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## цель работы
+
+
+
+## задание
+
+### подготовка
+```{r}
+library(dplyr)
+starwars
+starwars <- starwars
+```
+
+### задание 1
+сколько строк в датафрейме
+```{r}
+starwars %>% nrow
+```
+### задание 2
+```{r}
+starwars %>% ncol()
+```
+
+### задание 3
+```{r}
+starwars %>% glimpse()
+```
+
+
+
+
+
