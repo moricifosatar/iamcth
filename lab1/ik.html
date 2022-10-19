@@ -403,17 +403,19 @@ select(),filter(),mutate(),arrange(),group_by().</p>
 <pre class="r"><code>starwars &lt;- starwars</code></pre>
 <div id="задание-1" class="section level3">
 <h3>Задание 1</h3>
-<p>сколько строк в датафрейме</p>
+<p>Сколько строк в датафрейме?</p>
 <pre class="r"><code>starwars %&gt;% nrow</code></pre>
 <pre><code>## [1] 87</code></pre>
 </div>
 <div id="задание-2" class="section level3">
 <h3>Задание 2</h3>
+<p>Сколько столбцов в датафрейме?</p>
 <pre class="r"><code>starwars %&gt;% ncol()</code></pre>
 <pre><code>## [1] 14</code></pre>
 </div>
 <div id="задание-3" class="section level3">
 <h3>Задание 3</h3>
+<p>Как посмотреть примерный вид датафрейма?</p>
 <pre class="r"><code>starwars %&gt;% glimpse()</code></pre>
 <pre><code>## Rows: 87
 ## Columns: 14
@@ -434,11 +436,61 @@ select(),filter(),mutate(),arrange(),group_by().</p>
 </div>
 <div id="задание-4" class="section level3">
 <h3>Задание 4</h3>
+<p>Сколько уникальных рас персонажей представлено в данных?</p>
 <pre class="r"><code>length(unique(starwars$species))</code></pre>
 <pre><code>## [1] 38</code></pre>
 </div>
 <div id="задание-5" class="section level3">
 <h3>Задание 5</h3>
+<p>Найти самого высокого персонажа.</p>
+<pre class="r"><code>starwars %&gt;% filter(height==max(na.omit(starwars$height)))</code></pre>
+<pre><code>## # A tibble: 1 × 14
+##   name        height  mass hair_c…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵
+##   &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
+## 1 Yarael Poof    264    NA none     white   yellow       NA male  mascu… Quermia
+## # … with 4 more variables: species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;,
+## #   starships &lt;list&gt;, and abbreviated variable names ¹​hair_color, ²​skin_color,
+## #   ³​eye_color, ⁴​birth_year, ⁵​homeworld</code></pre>
+</div>
+<div id="задание-6" class="section level3">
+<h3>Задание 6</h3>
+<p>Найти всех пресонажей ниже 170.</p>
+<pre class="r"><code>na.omit(starwars$height)</code></pre>
+<pre><code>##  [1] 172 167  96 202 150 178 165  97 183 182 188 180 228 180 173 175 170 180  66
+## [20] 170 183 200 190 177 175 180 150  88 160 193 191 170 196 224 206 183 137 112
+## [39] 183 163 175 180 178  94 122 163 188 198 196 171 184 188 264 188 196 185 157
+## [58] 183 183 170 166 165 193 191 183 168 198 229 213 167  79  96 193 191 178 216
+## [77] 234 188 178 206 165
+## attr(,&quot;na.action&quot;)
+## [1] 28 82 83 84 85 86
+## attr(,&quot;class&quot;)
+## [1] &quot;omit&quot;</code></pre>
+<pre class="r"><code>starwars %&gt;% filter(height &lt;170)</code></pre>
+<pre><code>## # A tibble: 23 × 14
+##    name        height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵
+##    &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
+##  1 C-3PO          167    75 &lt;NA&gt;    gold    yellow      112 none  mascu… Tatooi…
+##  2 R2-D2           96    32 &lt;NA&gt;    white,… red          33 none  mascu… Naboo  
+##  3 Leia Organa    150    49 brown   light   brown        19 fema… femin… Aldera…
+##  4 Beru White…    165    75 brown   light   blue         47 fema… femin… Tatooi…
+##  5 R5-D4           97    32 &lt;NA&gt;    white,… red          NA none  mascu… Tatooi…
+##  6 Yoda            66    17 white   green   brown       896 male  mascu… &lt;NA&gt;   
+##  7 Mon Mothma     150    NA auburn  fair    blue         48 fema… femin… Chandr…
+##  8 Wicket Sys…     88    20 brown   brown   brown         8 male  mascu… Endor  
+##  9 Nien Nunb      160    68 none    grey    black        NA male  mascu… Sullust
+## 10 Watto          137    NA black   blue, … yellow       NA male  mascu… Toydar…
+## # … with 13 more rows, 4 more variables: species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;, and abbreviated variable names
+## #   ¹​hair_color, ²​skin_color, ³​eye_color, ⁴​birth_year, ⁵​homeworld</code></pre>
+</div>
+<div id="задание-7" class="section level3">
+<h3>Задание 7</h3>
+<p>Подсчитать ИМТ для всех персонажей</p>
+</div>
+<div id="задание-8" class="section level3">
+<h3>Задание 8</h3>
+<p>Найти 10 самых “вытянутых” персонажей. “Вытянутость” оценить по
+отношению массы к росту персонажей.</p>
 </div>
 </div>
 
