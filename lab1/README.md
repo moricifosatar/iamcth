@@ -1,12 +1,6 @@
----
-title: "Основы обработки данных с помощью R"
-output: html_document
-date: "2022-10-19"
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+# Основы обработки данных с помощью R
+
 
 ## Цель работы
 1.Развить практиеские использования языка программирования R для обработки данных.
@@ -23,12 +17,13 @@ library(dplyr)
 starwars
 starwars <- starwars
 ```
-
 ### Задание 1
 Сколько строк в датафрейме?
 ```{r}
 starwars %>% nrow
 ```
+![image](https://user-images.githubusercontent.com/70742614/202180136-0aa4605e-b98e-4f64-9bb7-b5a821d46eac.png)
+
 ### Задание 2
 Сколько столбцов в датафрейме?
 ```{r}
@@ -77,7 +72,7 @@ starwars %>%
   select(name,elongation)
 ```
 
-###Задание 9
+### Задание 9
 Найти средний возраст персонажей каждой расы вселенной Звездных войн.
 ```{r}
 starwars %>%
@@ -86,7 +81,7 @@ starwars %>%
   group_by(species) %>%
   summarise(mean_age = mean(birth_year))
 ```
-###Задание 10
+### Задание 10
 Найти самый распространенный цвет глаз персонажей вселенной Звездных войн.
 ```{r}
 starwars %>%
@@ -95,7 +90,7 @@ starwars %>%
   head(1)
 ```
 
-###Задание 11
+### Задание 11
 Подсчитать среднюю длину имени в каждой расе вселенной Звездных войн.
 ```{r}
 starwars %>%
@@ -103,3 +98,7 @@ starwars %>%
   group_by(species) %>%
   summarise(mean_len_name = mean(nchar(name)))
 ```
+
+
+## Оценка результата
+## Вывод
