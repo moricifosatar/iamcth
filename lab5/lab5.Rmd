@@ -27,6 +27,15 @@ descriptiona<-head[,3]
 data = read.csv("dns.log", header = FALSE,sep = "\t",encoding = "UTF-8")
 names(data)<-field
 print(data)
-
+```
+##Задание
+```{r}
+Is<-(unique(data$is))
+Id<-(unique(data$id))
+print(length(unique(union(Is,Id))))
 ```
 
+##Задание
+```{r}
+summary(data$is)
+```
