@@ -366,81 +366,8 @@ tidyverse языка R</p></li>
 </ol>
 <p>##Задание</p>
 <pre class="r"><code>head=read.csv(&quot;header.csv&quot;, header = TRUE)
-head</code></pre>
-<pre><code>##           Field       Type
-## 1           ts       time 
-## 2          uid      string
-## 3           id      recor 
-## 4            is      count
-## 5        proto       proto
-## 6     trans_id       count
-## 7        query      string
-## 8       qclass       count
-## 9  qclass_name      string
-## 10       qtype       count
-## 11  qtype_name      string
-## 12       rcode       count
-## 13  rcode_name      string
-## 14          QR       bool 
-## 15          AA       bool 
-## 16       TC RD  bool bool 
-## 17          RA       bool 
-## 18           Z       count
-## 19     answers      vector
-## 20        TTLs      vector
-## 21    rejected       bool 
-##                                                                                        Description
-## 1                                                                    Timestamp of the DNS request 
-## 2                                                                     Unique id of the connection 
-## 3                                                ID record with orig/resp host/port. See conn.log 
-## 4                                                                                        is record
-## 5                                                        Protocol of DNS transaction – TCP or UDP 
-## 6                                                         16 bit identifier assigned by DNS client
-## 7                                                                Domain name subject of the query 
-## 8                                                                Value specifying the query class 
-## 9                                           Descriptive name of the query class (e.g. C_INTERNET) 
-## 10                                                                Value specifying the query type 
-## 11                                                     Name of the query type (e.g. A, AAAA, PTR) 
-## 12                                                        Response code value in the DNS response 
-## 13                                 Descriptive name of the response code (e.g. NOERROR, NXDOMAIN) 
-## 14                                        Was this a query or a response? T = response, F = query 
-## 15                                    Authoritative Answer. T = server is authoritative for query 
-## 16 Truncation. T = message was truncated Recursion Desired. T = request recursive lookup of query 
-## 17                                     Recursion Available. T = server supports recursive queries 
-## 18                                      Reserved field, should be zero in all queries &amp; responses 
-## 19                                           List of resource descriptions in answer to the query 
-## 20                                                               Caching intervals of the answers 
-## 21                                               Whether the DNS query was rejected by the server 
-##                    X
-## 1                   
-## 2                   
-## 3                   
-## 4                   
-## 5                   
-## 6   responses match 
-## 7                   
-## 8                   
-## 9                   
-## 10                  
-## 11                  
-## 12                  
-## 13                  
-## 14                  
-## 15                  
-## 16                  
-## 17                  
-## 18                  
-## 19                  
-## 20                  
-## 21</code></pre>
-<pre class="r"><code>field&lt;-head[,1]
-field</code></pre>
-<pre><code>##  [1] &quot;ts &quot;          &quot;uid &quot;         &quot;id &quot;          &quot;is&quot;           &quot;proto &quot;      
-##  [6] &quot;trans_id &quot;    &quot;query &quot;       &quot;qclass &quot;      &quot;qclass_name &quot; &quot;qtype &quot;      
-## [11] &quot;qtype_name &quot;  &quot;rcode &quot;       &quot;rcode_name &quot;  &quot;QR &quot;          &quot;AA &quot;         
-## [16] &quot;TC RD &quot;       &quot;RA &quot;          &quot;Z &quot;           &quot;answers &quot;     &quot;TTLs &quot;       
-## [21] &quot;rejected &quot;</code></pre>
-<pre class="r"><code>type&lt;-head[,2]
+field&lt;-head[,1]
+type&lt;-head[,2]
 type&lt;-t(type)
 descriptiona&lt;-head[,3]
 data = read.csv(&quot;dns.log&quot;, header = FALSE,sep = &quot;\t&quot;,encoding = &quot;UTF-8&quot;)
