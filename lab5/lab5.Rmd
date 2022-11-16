@@ -24,11 +24,9 @@ field
 type<-head[,2]
 type<-t(type)
 descriptiona<-head[,3]
-descriptiona
-inf = read.csv("dns.log", header = FALSE,sep = "\t",encoding = "UTF-8")
-names(inf)<-field
-penguins <- rbind(inf, field);
-penguins;
-inf
+data = read.csv("dns.log", header = FALSE,sep = "\t",encoding = "UTF-8")
+names(data)<-field
+print(data)
+
 ```
 
