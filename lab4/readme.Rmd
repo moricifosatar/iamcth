@@ -14,10 +14,52 @@ knitr::opts_chunk$set(echo = TRUE)
 3.Развить пркатические навыки использования функций обработки данных пакета dplyr – функции select(), filter(), mutate(), arrange(), group_by()
 
 ## Задание
-Проанализировать встроенные в пакет nycflights13 наборы данных с помощью языка R и ответить на вопросы:
-### Подготовка
+Проанализировать встроенные в пакет nycflights13 наборы данных с помощью языка R и ответить на вопросы.
 ```{r}
-
+install.packages('dplyr')
+install.packages('nycflights13')
+library(dplyr)
+library(nycflights13)
 ```
 
 ### Задание 1
+Сколько встроенных в пакет nycflights13 датафреймов?
+```{r}
+df_package <- ls(package:nycflights13)
+df_package %>%
+length
+```
+### Задание 2
+Сколько строк в каждом датафрейме?
+```{r}
+al <- nycflights13::airlines
+ap <- nycflights13::airports
+f <- nycflights13::flights
+p <- nycflights13::planes
+w <- nycflights13::weather
+al %>% nrow() 
+ap %>% nrow()
+f %>% nrow()
+p %>% nrow()
+w %>% nrow()
+```
+
+### Задание 3
+Сколько столбцов в каждом датафрейме?
+```{r}
+al %>% ncol() 
+ap %>% ncol()
+f %>% ncol()
+p %>% ncol()
+w %>% ncol()
+```
+
+### Задание 4
+ Как просмотреть примерный вид датафрейма?
+```{r}
+al %>% glimpse() 
+ap %>% glimpse() 
+f %>% glimpse() 
+p %>% glimpse() 
+w %>% glimpse() 
+```
