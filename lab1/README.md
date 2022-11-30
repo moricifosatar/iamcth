@@ -22,7 +22,7 @@ starwars <- starwars
 ```{r}
 starwars %>% nrow
 ```
-![image](https://user-images.githubusercontent.com/70742614/202180136-0aa4605e-b98e-4f64-9bb7-b5a821d46eac.png)
+
 
 ### Задание 2
 Сколько столбцов в датафрейме?
