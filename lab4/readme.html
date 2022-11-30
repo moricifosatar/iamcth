@@ -500,6 +500,130 @@ al %&gt;% nrow() </code></pre>
 ## $ time_hour  &lt;dttm&gt; 2013-01-01 01:00:00, 2013-01-01 02:00:00, 2013-01-01 03:00…</code></pre>
 </div>
 </div>
+<div id="задание-5" class="section level2">
+<h2>Задание 5</h2>
+<p>Сколько компаний-перевозчиков (carrier) учитывают эти наборы данных
+(представлено в наборах данных)?</p>
+<pre class="r"><code>al %&gt;%
+  select(carrier) %&gt;%
+  distinct() %&gt;%
+  count()</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##       n
+##   &lt;int&gt;
+## 1    16</code></pre>
+<p>##Задание 6 Сколько рейсов принял аэропорт John F Kennedy Intl в
+мае?</p>
+<pre class="r"><code>a &lt;- airports %&gt;%
+  filter(name==&#39;John F Kennedy Intl&#39;)%&gt;%
+  select(faa)
+f %&gt;%
+  filter(!is.na(time_hour))%&gt;%
+  filter(dest==a, time_hour &gt;= as.POSIXct(&quot;2013-05-01 00:00:00&quot;, tz=&quot;UTC&quot;), time_hour &lt;= as.POSIXct(&quot;2013-05-31 24:59:59&quot;, tz=&quot;UTC&quot;)) %&gt;%
+  count()</code></pre>
+<pre><code>## Warning in check_tzones(e1, e2): &#39;tzone&#39; attributes are inconsistent
+
+## Warning in check_tzones(e1, e2): &#39;tzone&#39; attributes are inconsistent</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##       n
+##   &lt;int&gt;
+## 1     0</code></pre>
+</div>
+<div id="задание-7" class="section level2">
+<h2>Задание 7</h2>
+<p>Какой самый северный аэропорт?</p>
+<pre class="r"><code>ap %&gt;%
+  filter(lat==max(lat))</code></pre>
+<pre><code>## # A tibble: 1 × 8
+##   faa   name                      lat   lon   alt    tz dst   tzone
+##   &lt;chr&gt; &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1 EEN   Dillant Hopkins Airport  72.3  42.9   149    -5 A     &lt;NA&gt;</code></pre>
+</div>
+<div id="задание-8" class="section level2">
+<h2>Задание 8</h2>
+<p>Какой аэропорт самый высокогорный (находится выше всех над уровнем
+моря)?</p>
+<pre class="r"><code>ap %&gt;%
+  filter(lon==max(lon))</code></pre>
+<pre><code>## # A tibble: 1 × 8
+##   faa   name           lat   lon   alt    tz dst   tzone            
+##   &lt;chr&gt; &lt;chr&gt;        &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;            
+## 1 SYA   Eareckson As  52.7  174.    98    -9 A     America/Anchorage</code></pre>
+</div>
+<div id="задание-9" class="section level2">
+<h2>Задание 9</h2>
+<p>Какие бортовые номера у самых старых самолетов?</p>
+<pre class="r"><code>planes %&gt;%
+  filter(!is.na(year))%&gt;%
+  filter(year==min(year))%&gt;%
+  select(tailnum)</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##   tailnum
+##   &lt;chr&gt;  
+## 1 N381AA</code></pre>
+</div>
+<div id="задание-10" class="section level2">
+<h2>Задание 10</h2>
+<p>Какая средняя температура воздуха была в сентябре в аэропорту John F
+Kennedy Intl (в градусах Цельсия)?</p>
+<pre class="r"><code>a &lt;- airports %&gt;%
+  filter(name==&#39;John F Kennedy Intl&#39;)%&gt;%
+  select(faa)
+b&lt;-weather %&gt;%
+  filter(origin==a$faa, month==9)%&gt;%
+  select(temp)
+5/9*(mean(b$temp)-32)</code></pre>
+<pre><code>## [1] 19.38764</code></pre>
+</div>
+<div id="задание-11" class="section level2">
+<h2>Задание 11</h2>
+<p>Самолеты какой авиакомпании совершили больше всего вылетов в
+июне?</p>
+<pre class="r"><code>flights%&gt;%
+  filter(month==6)%&gt;%
+  group_by(carrier)%&gt;%
+  summarise(count_flights=length(flight), .groups = &quot;drop&quot;)%&gt;%
+  arrange(desc(count_flights))%&gt;%
+  slice(1:1)</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   carrier count_flights
+##   &lt;chr&gt;           &lt;int&gt;
+## 1 UA               4975</code></pre>
+</div>
+<div id="задание-12" class="section level2">
+<h2>Задание 12</h2>
+<p>Самолеты какой авиакомпании задерживались чаще других в 2013
+году?</p>
+<pre class="r"><code>flights</code></pre>
+<pre><code>## # A tibble: 336,776 × 19
+##     year month   day dep_time sched_de…¹ dep_d…² arr_t…³ sched…⁴ arr_d…⁵ carrier
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;      &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt;   &lt;dbl&gt; &lt;chr&gt;  
+##  1  2013     1     1      517        515       2     830     819      11 UA     
+##  2  2013     1     1      533        529       4     850     830      20 UA     
+##  3  2013     1     1      542        540       2     923     850      33 AA     
+##  4  2013     1     1      544        545      -1    1004    1022     -18 B6     
+##  5  2013     1     1      554        600      -6     812     837     -25 DL     
+##  6  2013     1     1      554        558      -4     740     728      12 UA     
+##  7  2013     1     1      555        600      -5     913     854      19 B6     
+##  8  2013     1     1      557        600      -3     709     723     -14 EV     
+##  9  2013     1     1      557        600      -3     838     846      -8 B6     
+## 10  2013     1     1      558        600      -2     753     745       8 AA     
+## # … with 336,766 more rows, 9 more variables: flight &lt;int&gt;, tailnum &lt;chr&gt;,
+## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
+## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;, and abbreviated variable names
+## #   ¹​sched_dep_time, ²​dep_delay, ³​arr_time, ⁴​sched_arr_time, ⁵​arr_delay</code></pre>
+<pre class="r"><code>flights%&gt;%
+  filter(year==2013)%&gt;%
+  filter(dep_delay&gt;0)%&gt;%
+  group_by(carrier)%&gt;%
+  summarise(delay_times=length(flight), .groups = &quot;drop&quot;)%&gt;%
+  arrange(desc(delay_times))%&gt;%
+  slice(1:1)</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   carrier delay_times
+##   &lt;chr&gt;         &lt;int&gt;
+## 1 UA            27261</code></pre>
+</div>
 
 
 
